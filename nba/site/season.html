@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beatn’ the Books NBA · Season</title>
+<meta name="description" content="Season-to-date record of every NBA bet the site suggested, graded at the price shown, plus our model against the market.">
+<meta name="theme-color" content="#09080d">
+<link rel="icon" href="tab-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <div class="brandrow">
+      <a class="brand" href="index.html" aria-label="Beatn’ the Books NBA home"><img src="favicon.svg" alt="" width="42" height="42"><span class="word">Beatn’ the <em>Books</em><span class="league">NBA</span></span></a>
+      <nav class="nav" aria-label="Pages">
+        <a href="index.html">Today</a>
+        <a href="index.html#bets">My bets</a>
+        <a href="season.html" aria-current="page">Season</a>
+        <a href="teams.html">Teams</a>
+        <a href="method.html">Method</a>
+      </nav>
+      <span class="spring"></span>
+      <span class="stamp" data-stamp></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" data-page="season">
+  <section>
+    <div class="pagehead">
+      <div>
+        <div class="eyebrow">Track record · NBA</div>
+        <h1 id="seasonTitle">Season so far</h1>
+      </div>
+      <div class="sub" id="seasonSub"></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Scoreboard · every bet the site suggested</div>
+    <div class="tablebox"><table id="pickBoard"></table></div>
+    <p class="lede" id="pickBoardNote"></p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Running profit if you bet $100 on every model lean</div>
+    <div class="panel">
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--series-1)"></i>Moneyline leans</span>
+        <span><i style="background:var(--series-2)"></i>Spread leans</span>
+      </div>
+      <div class="chart" id="cumChart"></div>
+    </div>
+    <p class="lede">A lean is the side our model likes at the closing price, however small the edge. They aren’t suggestions:
+      from 2019–20 to 2025–26 the model lost to the closing line, so this chart is the honest test of whether that changes.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">By week</div>
+    <div class="tablebox"><table id="byWeek"></table></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Every lean, newest first</div>
+    <div class="filters" id="filters" role="group" aria-label="Filter bets" style="margin:0 0 12px">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="lean" aria-pressed="false">Moneyline</button>
+      <button type="button" data-f="spread" aria-pressed="false">Spread</button>
+    </div>
+    <div class="tablebox"><table id="betLog"></table></div>
+    <p class="lede">Results use the final betting line before tip-off (the middle of the sportsbooks ESPN lists). Your own price will differ a little.</p>
+  </section>
+
+  <footer><div class="fbrand"><img src="favicon.svg" alt="" width="30" height="30"><span>Beatn’ the <em>Books</em> · NBA</span></div><br>Analysis only, not betting advice. Data: ESPN (scores, sportsbook lines, injuries), Kalshi and Polymarket (prices).<br><span data-foot></span></footer>
+</main>
+<script src="data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

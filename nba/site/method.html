@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beatn’ the Books NBA · Method</title>
+<meta name="description" content="How the NBA edition works: the Elo model, the fair price, and the out-of-sample tests against the NBA closing line.">
+<meta name="theme-color" content="#09080d">
+<link rel="icon" href="tab-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <div class="brandrow">
+      <a class="brand" href="index.html" aria-label="Beatn’ the Books NBA home"><img src="favicon.svg" alt="" width="42" height="42"><span class="word">Beatn’ the <em>Books</em><span class="league">NBA</span></span></a>
+      <nav class="nav" aria-label="Pages">
+        <a href="index.html">Today</a>
+        <a href="index.html#bets">My bets</a>
+        <a href="season.html">Season</a>
+        <a href="teams.html">Teams</a>
+        <a href="method.html" aria-current="page">Method</a>
+      </nav>
+      <span class="spring"></span>
+      <span class="stamp" data-stamp></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" data-page="method">
+  <section>
+    <div class="pagehead"><div><div class="eyebrow">How it works · NBA</div><h1>Method and research</h1></div></div>
+    <p class="lede">The NBA edition runs the same tests as the NFL site: a rating model against the betting market, every idea
+      checked on seasons it never saw. The short version: the NBA closing line is even harder to beat than the NFL’s. Our model
+      lost to it in all seven test seasons, and none of the 47 signals we tried held up. What the site offers instead is one
+      place to see every game, the fair price, and where Kalshi or Polymarket is cheaper than it.</p>
+  </section>
+
+  <section class="kpis" style="margin-top:16px">
+    <div class="kpi"><div class="v bad">−4.1%</div><div class="l">Our model alone, betting every edge at the final line<br><span>2019–20 to 2025–26 · 7,205 bets</span></div></div>
+    <div class="kpi"><div class="v">7 of 7</div><div class="l">Test seasons where the closing line was more accurate than our model</div></div>
+    <div class="kpi"><div class="v">1%</div><div class="l">Best weight for our model in a blend with the market<br><span>fit on 2013–14 to 2018–19</span></div></div>
+    <div class="kpi"><div class="v">47</div><div class="l">Signals tested against the market; none survived</div></div>
+  </section>
+
+  <section class="prose">
+    <h2>1. The market price</h2>
+    <p>A moneyline becomes a probability with q = 1 / d, where d is decimal odds. Both sides add up to more than 100%;
+      the extra is the book’s margin. Removing it gives the fair price:</p>
+    <span class="formula">p<sub>fair</sub> = q<sub>home</sub> / (q<sub>home</sub> + q<sub>away</sub>)</span>
+    <p>For finished games the site uses the closing line: the middle (median) of every sportsbook ESPN lists for that game,
+      usually 5 to 12 books. For upcoming games ESPN shows DraftKings’ current line, and the fair price is the middle of three
+      prices: DraftKings with its margin removed, Kalshi’s midpoint and Polymarket’s midpoint. One sportsbook alone is a shaky
+      fair price; in the NFL test the two exchanges were within about 1 win-percentage point of the sportsbooks’ final price.</p>
+    <p>Expected value always uses the price you’d actually get, fees included:
+      expected return = p · d − 1. Kalshi charges about 7% × price × (1 − price) per contract, Polymarket 5%.</p>
+
+    <h2>2. The Elo model</h2>
+    <p>Every team has a rating, updated after every game since 2008–09 with FiveThirtyEight’s margin-of-victory multiplier.
+      Each summer, ratings keep 75% of their distance from average. Settings were tuned on game results from 2009–10 to
+      2018–19 only (no betting lines): K = 18, and a team on the second night of a back-to-back loses 30 Elo (about 1 point).
+      Rest beyond that is worth 3 Elo per day, capped at 3 days.</p>
+    <span class="formula">P<sub>home</sub> = 1 / (1 + 10<sup>−Δ/400</sup>),  Δ = R<sub>home</sub> + HFA + adj − R<sub>away</sub></span>
+    <p>Home court isn’t fixed. It fell across the league, from about 3.5 points before 2020 to closer to 2 since, so HFA is the
+      league’s average home margin over the last two seasons plus this one so far: <b><span data-hfa></span> points</b> right now
+      (28 Elo per point). Neutral-court games (Mexico City, Europe, the NBA Cup final) get none.</p>
+    <p>What the model can’t see: who is playing. In the NBA one star sitting out moves a line 5 to 10 points, and teams rest
+      players on purpose. The market knows the injury report the minute it changes; our Elo doesn’t.</p>
+
+    <h2>3. How Elo did against the closing line (2019–20 to 2025–26)</h2>
+  </section>
+  <div class="tablebox" style="margin-top:4px"><table>
+    <thead><tr><th>Season</th><th class="n">Games</th><th class="n">Accuracy score, our model<br>(lower is better)</th><th class="n">Accuracy score, market</th><th class="n">Winners picked, model</th><th class="n">Winners picked, market</th></tr></thead>
+    <tbody>
+      <tr><td>2019–20</td><td class="n">1,143</td><td class="n">0.6310</td><td class="n ok">0.6108</td><td class="n">63.8%</td><td class="n">66.8%</td></tr>
+      <tr><td>2020–21</td><td class="n">1,171</td><td class="n">0.6466</td><td class="n ok">0.6189</td><td class="n">61.1%</td><td class="n">65.8%</td></tr>
+      <tr><td>2021–22</td><td class="n">1,323</td><td class="n">0.6306</td><td class="n ok">0.6068</td><td class="n">65.8%</td><td class="n">68.0%</td></tr>
+      <tr><td>2022–23</td><td class="n">1,320</td><td class="n">0.6479</td><td class="n ok">0.6265</td><td class="n">62.7%</td><td class="n">65.7%</td></tr>
+      <tr><td>2023–24</td><td class="n">1,319</td><td class="n">0.6107</td><td class="n ok">0.5835</td><td class="n">66.1%</td><td class="n">68.9%</td></tr>
+      <tr><td>2024–25</td><td class="n">1,321</td><td class="n">0.6112</td><td class="n ok">0.5857</td><td class="n">66.1%</td><td class="n">68.7%</td></tr>
+      <tr><td>2025–26</td><td class="n">1,322</td><td class="n">0.6021</td><td class="n ok">0.5767</td><td class="n">68.6%</td><td class="n">68.6%</td></tr>
+      <tr class="sel"><td><b>All seven</b></td><td class="n">8,919</td><td class="n">0.6253</td><td class="n ok">0.6008</td><td class="n">65.0%</td><td class="n">67.5%</td></tr>
+    </tbody></table></div>
+  <section class="prose" style="margin-top:8px">
+    <p>Betting every side our model liked at the closing moneyline lost 4.1% (7,205 bets); only bets with a 3%+ edge lost 3.8%.
+      Blindly betting every favorite lost 4.1%, every underdog 4.0%, every home team 5.3%. So the model did no better than
+      having no model. The NFL gap was smaller (0.6305 vs 0.6091); the NBA market is sharper still.</p>
+    <p>Blending: the weight on our model that gives the most accurate mix with the market, fit on 2013–14 to 2018–19, is 1%.
+      That’s the honest number the site uses, so “model leans” almost never appear, and model picks (a model edge of 5% or more)
+      essentially never. They’re still computed and graded, so the Season page shows what they would have done.</p>
+
+    <h3 class="subhead" id="thisYearTitle">This season so far</h3>
+    <p>The same comparison for this season’s finished games, at the final betting line. It updates after every game.</p>
+  </section>
+  <div class="tablebox" style="margin-top:4px"><table id="thisYear"></table></div>
+  <section class="prose" style="margin-top:8px">
+    <p class="why" id="thisYearNote"></p>
+
+    <h2>4. Looking for an edge against the market</h2>
+    <p>Each idea is tested as something the market might have missed: given the closing price, does it still predict the result?</p>
+    <span class="formula">logit P(win) = b<sub>0</sub> + b<sub>1</sub> · logit(p<sub>market</sub>) + b<sub>2</sub> · signal</span>
+    <p>If b<sub>2</sub> is zero, the market already prices the signal. The rule was fixed before any test number was seen:
+      a signal had to be clearly non-zero (|z| ≥ 2) on 2013–14 to 2018–19 and point the same way in both halves of that period.
+      Then 2019–20 to 2025–26 were scored once, each season fit on earlier seasons only, betting at the closing price.</p>
+    <p>Tested on the moneyline and the spread (17 each): back-to-backs, rest difference, 3 games in 4 nights, time zones crossed,
+      altitude (Denver, Utah), road-trip length, last game’s margin, last game against the spread, season against the spread,
+      win/loss streak, home underdog, big underdogs, Elo vs the market (all season and the first 10 games), playoffs,
+      moneyline vs spread, a points-based rating. On the total (13): back-to-backs, rest, altitude, total line vs league average,
+      teams’ season over/under, last game over/under, a points-based total, spread size, early season, playoffs, time zones,
+      overtime last game, 3 in 4 nights.</p>
+  </section>
+  <div class="tablebox" style="margin-top:4px"><table>
+    <thead><tr><th>Passed the 2013–19 screen</th><th>Bet type</th><th class="n">Accuracy vs market, 2019–26</th><th class="n">Return, every edge</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Fade teams on winning streaks</td><td>Moneyline</td><td class="n">0.60094 vs <b>0.60078</b></td><td class="n no">−2.5% <span class="push small">2,249 bets</span></td><td class="no">Rejected</td></tr>
+      <tr><td>Fade teams on winning streaks</td><td>Spread</td><td class="n">0.69323 vs <b>0.69287</b></td><td class="n no">−7.2% <span class="push small">847 bets</span></td><td class="no">Rejected</td></tr>
+      <tr><td>Fade teams whose games keep going over</td><td>Total</td><td class="n">0.69305 vs 0.69305</td><td class="n no">−1.7% <span class="push small">1,043 bets</span></td><td class="no">Rejected</td></tr>
+    </tbody></table></div>
+  <section class="prose" style="margin-top:8px">
+    <p>All three looked real on the older seasons and disappeared on the newer ones: the market was as accurate or more accurate
+      in every case. Back-to-backs, the most talked-about NBA angle, didn’t even pass the first screen: the line already moves
+      for them. Nothing was adopted. Blind baselines over the same test seasons at the closing price: every home moneyline −5.3%,
+      every away −2.8%, every home spread −5.0%, every away −4.1%, every over −3.4%, every under −5.7%.</p>
+
+    <h2>5. What the “Bets to take” boxes suggest</h2>
+    <p><span class="tag gap">Price gap · unproven</span> Kalshi or Polymarket selling a side at least 2% cheaper than the fair price,
+      after fees. In the NFL test, gaps like this an hour before kickoff returned +40% to +50% on 39 bets, which is promising but
+      could be luck (t = 1.0). There’s no NBA test of them yet. Sized at 0.5 units, 0.75 if our model agrees. Gaps on totals and spreads only count at the sportsbook’s own line.</p>
+    <p><span class="tag lean">Model pick · no proven edge</span> Our model’s blended edge of 5% or more on the moneyline or the spread,
+      shown with its real record. With the model at 1% weight these should be rare to nonexistent. Sized at 0.25 units.</p>
+    <p>Every suggestion is saved the first time it appears and graded at that price, including whether it beat the closing line.
+      Beating the close more than half the time is the earliest sign that an edge is real. The Season page keeps the score.</p>
+
+    <h2>6. What would actually help</h2>
+    <p>The gap between our model and the market is mostly lineups. The next upgrade would value each player (minutes and impact
+      from box scores) and adjust for who’s out on the injury report, the way the NFL model adjusts for quarterbacks. That has
+      to be tested the same way before it earns a place on the board.</p>
+  </section>
+
+  <footer><div class="fbrand"><img src="favicon.svg" alt="" width="30" height="30"><span>Beatn’ the <em>Books</em> · NBA</span></div><br>Analysis only, not betting advice. Data: ESPN (scores, sportsbook lines, injuries), Kalshi and Polymarket (prices).<br><span data-foot></span></footer>
+</main>
+<script src="data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

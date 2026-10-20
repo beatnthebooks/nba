@@ -1,0 +1,110 @@
+23180 games. Margin std-dev around the spread (fit on DEV): 11.4
+
+=== ML  DEV 2013-14..2018-19  (7751 games) ===
+  market calibration: intercept -0.007 (z -0.3)   slope on logit(p) 0.993 (z vs 1: -0.2)
+  feature              coef      z  halves agree  selected
+  streak            -0.0218  -2.74  yes           <== SELECTED
+  season_ats        -0.0190  -1.85  yes           
+  three_in_four     -0.0341  -0.76  no            
+  last_margin       -0.0009  -0.67  yes           
+  b2b               -0.0294  -0.57  no            
+  last_ats          -0.0009  -0.56  yes           
+  big_dog           -0.0580  -0.54  no            
+  home_dog          +0.0404  +0.48  yes           
+  ml_vs_spread      +0.1205  +0.47  yes           
+  altitude          -0.0470  -0.45  no            
+  tz_travel         -0.0103  -0.39  no            
+  elo_gap           -0.0251  -0.37  no            
+  playoff           -0.0246  -0.24  yes           
+  pts_gap           -0.0020  -0.13  no            
+  early_elo         -0.0181  -0.12  no            
+  trip_len          +0.0013  +0.08  no            
+  rest_diff         -0.0011  -0.04  no            
+
+=== SPREAD  DEV 2013-14..2018-19  (7657 games) ===
+  market calibration: intercept -0.019 (z -0.8)   slope on logit(p) -1.205 (z vs 1: -1.4)
+  feature              coef      z  halves agree  selected
+  streak            -0.0140  -2.20  yes           <== SELECTED
+  big_dog           +0.1014  +1.78  yes           
+  season_ats        -0.0127  -1.42  yes           
+  ml_vs_spread      -0.2148  -1.10  yes           
+  pts_gap           +0.0049  +0.97  yes           
+  trip_len          +0.0115  +0.82  yes           
+  altitude          -0.0343  -0.36  no            
+  early_elo         +0.0423  +0.32  no            
+  last_margin       -0.0003  -0.25  yes           
+  tz_travel         -0.0054  -0.23  no            
+  home_dog          +0.0109  +0.22  no            
+  three_in_four     -0.0080  -0.20  no            
+  elo_gap           +0.0090  +0.17  no            
+  b2b               -0.0076  -0.16  no            
+  last_ats          +0.0002  +0.14  no            
+  playoff           +0.0112  +0.12  no            
+  rest_diff         +0.0017  +0.07  no            
+
+=== TOTAL  DEV 2013-14..2018-19  (7684 games) ===
+  market calibration: intercept -0.017 (z -0.7)   slope on logit(p) -0.896 (z vs 1: -0.9)
+  feature              coef      z  halves agree  selected
+  team_ou           -0.0322  -2.34  yes           <== SELECTED
+  last_ou           +0.0031  +1.58  yes           
+  three_in_four     -0.0532  -1.56  yes           
+  tz_sum            -0.0237  -1.14  no            
+  any_b2b           +0.0354  +0.92  yes           
+  rest_sum          +0.0137  +0.74  yes           
+  line_level        -0.0018  -0.70  yes           
+  altitude          -0.0504  -0.54  no            
+  ot_last           -0.0290  -0.44  no            
+  early_season      +0.0273  +0.38  no            
+  pts_model         +0.0008  +0.23  no            
+  abs_spread        -0.0010  -0.16  no            
+  playoff           -0.0125  -0.13  no            
+
+Selected on DEV: {'ml': ['streak'], 'spread': ['streak'], 'total': ['team_ou']}
+
+==============================================================================
+OUT-OF-SAMPLE TEST 2019-20..2025-26 (expanding-window refit, consensus closing prices)
+==============================================================================
+
+ML: market calibration only 
+  log loss  model 0.60082  vs market 0.60078  (market better, 8919 games)
+  EV > 0%:   207 bets  ROI -16.97%  (t = -0.97)  winning seasons 1/7
+  EV > 2%:     5 bets  ROI -100.00%  (t = +0.00)  winning seasons 0/2
+  EV > 4%: no bets
+
+ML: + selected features ['streak']
+  log loss  model 0.60094  vs market 0.60078  (market better, 8919 games)
+  EV > 0%:  2249 bets  ROI  -2.53%  (t = -0.72)  winning seasons 2/7
+  EV > 2%:  1007 bets  ROI -11.38%  (t = -2.10)  winning seasons 2/7
+  EV > 4%:   435 bets  ROI -13.26%  (t = -1.49)  winning seasons 2/7
+
+SPREAD: market calibration only 
+  log loss  model 0.69334  vs market 0.69287  (market better, 8817 games)
+  EV > 0%:   186 bets  ROI  -7.16%  (t = -0.98)  winning seasons 1/4
+  EV > 2%:   118 bets  ROI -13.44%  (t = -1.46)  winning seasons 0/1
+  EV > 4%:    69 bets  ROI  -9.28%  (t = -0.76)  winning seasons 0/1
+
+SPREAD: + selected features ['streak']
+  log loss  model 0.69323  vs market 0.69287  (market better, 8817 games)
+  EV > 0%:   847 bets  ROI  -7.22%  (t = -2.18)  winning seasons 1/7
+  EV > 2%:   182 bets  ROI  +1.49%  (t = +0.20)  winning seasons 5/7
+  EV > 4%:    72 bets  ROI -13.11%  (t = -1.10)  winning seasons 0/1
+
+TOTAL: market calibration only 
+  log loss  model 0.69324  vs market 0.69305  (market better, 8842 games)
+  EV > 0%:   150 bets  ROI  +3.01%  (t = +0.37)  winning seasons 3/4
+  EV > 2%:   105 bets  ROI  +0.26%  (t = +0.03)  winning seasons 3/4
+  EV > 4%:    51 bets  ROI  +8.55%  (t = +0.59)  winning seasons 3/3
+
+TOTAL: + selected features ['team_ou']
+  log loss  model 0.69305  vs market 0.69305  (market better, 8842 games)
+  EV > 0%:  1043 bets  ROI  -1.65%  (t = -0.55)  winning seasons 2/7
+  EV > 2%:   351 bets  ROI  +0.43%  (t = +0.08)  winning seasons 3/7
+  EV > 4%:   122 bets  ROI  +2.36%  (t = +0.26)  winning seasons 4/6
+
+Blind baselines, 2019-20..2025-26 at closing prices:
+  every home   ml       8919 bets  ROI  -5.33%
+  every away   ml       8919 bets  ROI  -2.79%
+  every home   spread   8817 bets  ROI  -5.01%
+  every away   spread   8817 bets  ROI  -4.06%
+  every over   total    8842 bets  ROI  -3.41%
+  every under  total    8842 bets  ROI  -5.66%

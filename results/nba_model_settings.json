@@ -1,0 +1,13 @@
+{
+ "params": {
+  "k": 18,
+  "carry": 0.75,
+  "b2b": 30.0,
+  "rest": 3,
+  "hfa_min_games": 300
+ },
+ "train_ll": 0.60073,
+ "blend_w": 0.01,
+ "train": "2010-2019",
+ "blend_fit": "2014-2019"
+}
