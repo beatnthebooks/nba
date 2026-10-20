@@ -1,0 +1,85 @@
+name: Update NBA site
+
+# Rebuilds Beatn' the Books NBA from ESPN (scores, DraftKings lines, injuries) and Kalshi/Polymarket prices, and
+# publishes nba/site/ to GitHub Pages (beatnthebooks.github.io/nba/). No secrets, no API credits, no phone alerts.
+# The current season's raw ESPN downloads are kept in the Actions cache between runs (never committed); the repo
+# itself only carries past seasons' scores (data/nba/history_scores.csv) and the pick log.
+
+on:
+  schedule:
+    # UTC. Central (CDT, until Nov 1): 7:15a, 11:15a, 2:15p, 4:15p, 6:15p, 8:15p, 10:15p, 12:15a.
+    # In winter (CST) each is an hour earlier. Most games tip 6-9:30p CT.
+    - cron: "15 12,16,19,21,23 * * *"
+    - cron: "15 1,3,5 * * *"
+  workflow_dispatch:        # "Run workflow" button on the Actions tab
+  push:
+    branches: [main]
+
+permissions:
+  contents: write           # to save data/nba/pick_log.json back to the repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore this season's ESPN downloads
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/nba/events.json
+            data/nba/dates.json
+            data/nba/odds.json
+          key: nba-${{ github.run_id }}
+          restore-keys: nba-
+
+      - name: Tests (a failure stops the deploy)
+        run: python -m unittest discover -s tests
+
+      - name: Rebuild with fresh data
+        run: python nba/board.py
+
+      - name: Save this season's ESPN downloads
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/nba/events.json
+            data/nba/dates.json
+            data/nba/odds.json
+          key: nba-${{ github.run_id }}
+
+      - name: Save the pick log (picks freeze at tip-off)
+        run: |
+          git config user.name "edge-board-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nba/pick_log.json
+          git diff --cached --quiet || git commit -m "Update NBA pick log"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: nba/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
