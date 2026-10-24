@@ -40,6 +40,49 @@
    }
   }
  },
+ "401909861": {
+  "ml|home|": {
+   "first": {
+    "dec": 3.8005,
+    "edge": 2.6,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 25.0
+    },
+    "ts": "2026-10-23T20:48"
+   },
+   "last": {
+    "dec": 3.8005,
+    "edge": 2.6,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 25.0
+    },
+    "ts": "2026-10-23T20:48"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 2.5,
+    "point": null,
+    "rec": "ml",
+    "side": "home",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Jazz to win",
+    "units": 0.75,
+    "why": [
+     "2.6% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 25% to win, the market 27%"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
