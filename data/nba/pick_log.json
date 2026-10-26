@@ -165,6 +165,47 @@
    }
   }
  },
+ "401909875": {
+  "spread|away|-1.5": {
+   "first": {
+    "dec": 2.1168,
+    "edge": -11.7,
+    "point": -1.5,
+    "price": {
+     "book": "Polymarket",
+     "cents": 46.0
+    },
+    "ts": "2026-10-26T11:54"
+   },
+   "last": {
+    "dec": 2.1168,
+    "edge": -11.7,
+    "point": -1.5,
+    "price": {
+     "book": "Polymarket",
+     "cents": 46.0
+    },
+    "ts": "2026-10-26T11:54"
+   },
+   "pick": {
+    "edgeFrom": "spread",
+    "mk": "spread",
+    "model": 5.7,
+    "point": -1.5,
+    "rec": "spread",
+    "side": "away",
+    "src": [
+     "spread"
+    ],
+    "suggested": true,
+    "text": "Grizzlies -1.5",
+    "units": 0.25,
+    "why": [
+     "our model has them losing by 0.3; the line says winning by 1.5"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
