@@ -249,6 +249,86 @@
    }
   }
  },
+ "401909891": {
+  "ml|away|": {
+   "first": {
+    "dec": 1.512,
+    "edge": 2.4,
+    "point": null,
+    "price": {
+     "book": "Polymarket",
+     "cents": 65.0
+    },
+    "ts": "2026-10-27T16:44"
+   },
+   "last": {
+    "dec": 1.512,
+    "edge": 2.4,
+    "point": null,
+    "price": {
+     "book": "Polymarket",
+     "cents": 65.0
+    },
+    "ts": "2026-10-27T16:44"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 2.6,
+    "point": null,
+    "rec": "ml",
+    "side": "away",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Thunder to win",
+    "units": 0.75,
+    "why": [
+     "2.4% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 81% to win, the market 68%"
+    ]
+   }
+  },
+  "ml|home|": {
+   "first": {
+    "dec": 3.1776,
+    "edge": 2.5,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 30.0
+    },
+    "ts": "2026-10-27T16:44"
+   },
+   "last": {
+    "dec": 3.1776,
+    "edge": 2.5,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 30.0
+    },
+    "ts": "2026-10-27T16:44"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "point": null,
+    "side": "home",
+    "src": [
+     "gap"
+    ],
+    "suggested": false,
+    "text": "Mavericks to win",
+    "units": 0.5,
+    "why": [
+     "2.5% cheaper than the sportsbooks\u2019 fair price"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
