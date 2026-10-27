@@ -206,6 +206,49 @@
    }
   }
  },
+ "401909877": {
+  "ml|away|": {
+   "first": {
+    "dec": 5.9029,
+    "edge": 3.3,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 16.0
+    },
+    "ts": "2026-10-27T07:55"
+   },
+   "last": {
+    "dec": 5.9029,
+    "edge": 3.3,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 16.0
+    },
+    "ts": "2026-10-27T07:55"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 3.1,
+    "point": null,
+    "rec": "ml",
+    "side": "away",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Nets to win",
+    "units": 0.75,
+    "why": [
+     "3.3% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 14% to win, the market 18%"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
