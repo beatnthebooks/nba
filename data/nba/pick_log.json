@@ -291,6 +291,45 @@
   }
  },
  "401909883": {
+  "spread|away|6.5": {
+   "first": {
+    "dec": 2.0947,
+    "edge": -10.5,
+    "point": 6.5,
+    "price": {
+     "book": "Kalshi",
+     "cents": 46.0
+    },
+    "ts": "2026-10-28T08:05"
+   },
+   "last": {
+    "dec": 2.0947,
+    "edge": -10.5,
+    "point": 6.5,
+    "price": {
+     "book": "Kalshi",
+     "cents": 46.0
+    },
+    "ts": "2026-10-28T08:05"
+   },
+   "pick": {
+    "edgeFrom": "spread",
+    "mk": "spread",
+    "model": 5.0,
+    "point": 6.5,
+    "rec": "spread",
+    "side": "away",
+    "src": [
+     "spread"
+    ],
+    "suggested": true,
+    "text": "Hornets +6.5",
+    "units": 0.25,
+    "why": [
+     "our model has them losing by 2.9; the line says losing by 6.5"
+    ]
+   }
+  },
   "spread|home|-7.5": {
    "first": {
     "dec": 2.1168,
