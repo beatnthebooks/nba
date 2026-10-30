@@ -505,13 +505,13 @@
    },
    "last": {
     "dec": 6.7373,
-    "edge": 3.7,
+    "edge": 2.3,
     "point": null,
     "price": {
      "book": "Kalshi",
      "cents": 14.0
     },
-    "ts": "2026-10-30T11:55"
+    "ts": "2026-10-30T14:53"
    },
    "pick": {
     "edgeFrom": "gap",
