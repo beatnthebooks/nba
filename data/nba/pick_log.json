@@ -618,6 +618,49 @@
    }
   }
  },
+ "401909933": {
+  "ml|away|": {
+   "first": {
+    "dec": 4.3101,
+    "edge": 7.3,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 22.0
+    },
+    "ts": "2026-11-01T10:45"
+   },
+   "last": {
+    "dec": 4.3101,
+    "edge": 7.3,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 22.0
+    },
+    "ts": "2026-11-01T10:45"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 6.9,
+    "point": null,
+    "rec": "ml",
+    "side": "away",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": true,
+    "text": "Mavericks to win",
+    "units": 0.75,
+    "why": [
+     "7.3% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 17% to win, the market 25%"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
