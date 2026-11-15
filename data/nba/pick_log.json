@@ -991,6 +991,92 @@
    }
   }
  },
+ "401909988": {
+  "ml|home|": {
+   "first": {
+    "dec": 11.7437,
+    "edge": 4.8,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 8.0
+    },
+    "ts": "2026-11-14T20:38"
+   },
+   "last": {
+    "dec": 11.7437,
+    "edge": 4.8,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 8.0
+    },
+    "ts": "2026-11-14T20:38"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 4.9,
+    "point": null,
+    "rec": "ml",
+    "side": "home",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Jazz to win",
+    "units": 0.75,
+    "why": [
+     "4.8% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 10% to win, the market 9%"
+    ]
+   }
+  }
+ },
+ "401909992": {
+  "ml|home|": {
+   "first": {
+    "dec": 3.6567,
+    "edge": 2.0,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 26.0
+    },
+    "ts": "2026-11-14T20:38"
+   },
+   "last": {
+    "dec": 3.6567,
+    "edge": 2.0,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 26.0
+    },
+    "ts": "2026-11-14T20:38"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 2.1,
+    "point": null,
+    "rec": "ml",
+    "side": "home",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Bucks to win",
+    "units": 0.75,
+    "why": [
+     "2.0% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 31% to win, the market 28%"
+    ]
+   }
+  }
+ },
  "_meta": {
   "started": "2026-10-20T16:40"
  }
