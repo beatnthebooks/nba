@@ -42,6 +42,49 @@
    }
   }
  },
+ "401909319": {
+  "ml|away|": {
+   "first": {
+    "dec": 2.4591,
+    "edge": 2.5,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 39.0
+    },
+    "ts": "2026-11-25T15:40"
+   },
+   "last": {
+    "dec": 2.4591,
+    "edge": 2.5,
+    "point": null,
+    "price": {
+     "book": "Kalshi",
+     "cents": 39.0
+    },
+    "ts": "2026-11-25T15:40"
+   },
+   "pick": {
+    "edgeFrom": "gap",
+    "mk": "ml",
+    "model": 2.1,
+    "point": null,
+    "rec": "ml",
+    "side": "away",
+    "src": [
+     "gap",
+     "lean"
+    ],
+    "suggested": false,
+    "text": "Cavaliers to win",
+    "units": 0.75,
+    "why": [
+     "2.5% cheaper than the sportsbooks\u2019 fair price",
+     "our model gives them 25% to win, the market 42%"
+    ]
+   }
+  }
+ },
  "401909842": {
   "spread|away|4.5": {
    "first": {
